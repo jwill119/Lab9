@@ -35,8 +35,12 @@ map<string,int> readIn(string filename) {
 // Writes a tally-map to a text file.
 void writeOut(map<string,int> theCount) {
     ofstream outFile("output.txt");
-    for(auto& kv : theCount) {
-        outFile << theCount.second;
+
+    map<string,int>::iterator in;
+    for (in = theCount.begin(); in != theCount.end(); in++) {
+        for (int i = 0; i < in->second; i++) {
+            outFile << in->first << " ";
+        }
     }
 
     outFile.close();
